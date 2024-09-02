@@ -61,3 +61,6 @@ data-base
 
 #packageLock
 package-lock.json
+
+#Prisma Local Migrations
+prisma/migrations
