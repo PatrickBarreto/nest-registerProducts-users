@@ -9,31 +9,31 @@ export class UsersController {
 
   @HttpCode(201)
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+  async create(@Body() createUserDto: CreateUserDto) {
+    return await this.usersService.create(createUserDto);
   }
 
   @HttpCode(200)
   @Get()
-  findAll() {
-    return this.usersService.findAll();
+  async findAll() {
+    return await this.usersService.findAll();
   }
 
   @HttpCode(200)
   @Get(':id')
-  findOne(@Param('id', new ParseIntPipe) id: number) {
-    return this.usersService.findOne(id);
+  async findOne(@Param('id', new ParseIntPipe) id: number) {
+    return await this.usersService.findOne(id);
   }
 
   @HttpCode(200)
   @Patch(':id')
-  update(@Param('id', new ParseIntPipe) id: number, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(id, updateUserDto);
+  async update(@Param('id', new ParseIntPipe) id: number, @Body() updateUserDto: UpdateUserDto) {
+    return await this.usersService.update(id, updateUserDto);
   }
 
   @HttpCode(204)
   @Delete(':id')
-  remove(@Param('id', new ParseIntPipe) id: number) {
-    return this.usersService.remove(id);
+  async remove(@Param('id', new ParseIntPipe) id: number) {
+    return await this.usersService.remove(id);
   }
 }
