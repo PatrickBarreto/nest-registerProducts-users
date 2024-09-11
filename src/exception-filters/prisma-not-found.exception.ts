@@ -15,6 +15,12 @@ export class PrismaNotFoundException implements ExceptionFilter {
                 message:"Not Found",
                 path:request.url
             });
+        }else if(exception.code === 'P2002') {
+            response.status(400).json({
+                statusCode:400,
+                message:"Duplicated data",
+                path:request.url
+            });
         }else{
             response.status(500).json({
                 statusCode:500,
