@@ -8,8 +8,8 @@ export class UsersRpository {
     constructor(private readonly Prisma: PrismaService){
     }
 
-    create(createUserDto: CreateUserDto) {
-        return this.Prisma.users.create({
+    async create(createUserDto: CreateUserDto) {
+        return await this.Prisma.users.create({
           data:{
             name:createUserDto.name,
             email:createUserDto.email
@@ -17,22 +17,22 @@ export class UsersRpository {
        });
     }
     
-    findAll() {
-        return this.Prisma.users.findMany({
+    async findAll() {
+        return await this.Prisma.users.findMany({
           orderBy:{
             createdAt: 'asc'
           }
         })
     }
     
-    findOne(id: number) {
-        return this.Prisma.users.findFirst({
+    async findOne(id: number) {
+        return await this.Prisma.users.findFirst({
           where: {id: id}
         })
     }
     
-    update(id: number, updateUserDto: UpdateUserDto) {
-        return this.Prisma.users.update({
+    async update(id: number, updateUserDto: UpdateUserDto) {
+        return await this.Prisma.users.update({
           where: {
             id:id
           },
@@ -43,8 +43,8 @@ export class UsersRpository {
         })
     }
     
-    delete(id: number) {
-        return this.Prisma.users.delete({
+    async delete(id: number) {
+        return await this.Prisma.users.delete({
           where:{
             id:id
           }
